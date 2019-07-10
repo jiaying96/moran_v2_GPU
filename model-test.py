@@ -169,6 +169,18 @@ def val(dataset, criterion, max_iter=1000):
             preds = preds.view(-1)
             sim_preds = converter.decode(preds.data, length.data)
 
+
+        # print("cpu_texts ")
+        # print(cpu_texts)
+
+        # print("预测结果")
+        # print(sim_preds)
+
+        for res in sim_preds:
+            print(res.strip().split('$')[0])
+
+
+
         loss_avg.add(cost)
         for pred, target in zip(sim_preds, cpu_texts):
             if pred == target.lower():
